@@ -1,0 +1,20 @@
+.github/workflows/release.yml
+  s_58b6f55c0833f4::t_fa6c2883d1eec8 21,114-116
+  s_58b6f55c0833f4::t_973532ad59d9ad 73-81
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "00f838d0efce586fda57ce596965b8bb14906477",
+  "prompts": {},
+  "sessions": {
+    "s_58b6f55c0833f4": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_de8e37bb1ffeg7g6B9LpPtCNn5",
+        "model": "deepseek/deepseek-v4.1-flash"
+      },
+      "human_author": "Miguel Angel Acevedo <acevedomiguel@gmail.com>"
+    }
+  }
+}
