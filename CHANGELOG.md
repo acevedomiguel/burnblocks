@@ -1,3 +1,9 @@
+## [1.1.0](https://github.com/acevedomiguel/burnblocks/compare/v1.0.0...v1.1.0) (2026-11-26)
+
+### Features
+
+* move the kimi engine into burnblocks ([#2](https://github.com/acevedomiguel/burnblocks/issues/2)) ([3010d40](https://github.com/acevedomiguel/burnblocks/commit/3010d4042c3db093e2f90ba6f447385ff482e2a7))
+
 ## 1.0.0 (2026-11-26)
 
 ### Features
