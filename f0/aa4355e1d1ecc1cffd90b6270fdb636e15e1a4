@@ -1,0 +1,21 @@
+README.md
+  s_58b6f55c0833f4::t_72aab327ea887f 38-40,44-66,68-101
+  s_58b6f55c0833f4::t_d3e959aa4692cd 67
+  s_58b6f55c0833f4::t_64122b744ac00f 102
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "f0aa4355e1d1ecc1cffd90b6270fdb636e15e1a4",
+  "prompts": {},
+  "sessions": {
+    "s_58b6f55c0833f4": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_de8e37bb1ffeg7g6B9LpPtCNn5",
+        "model": "deepseek/deepseek-v4.1-flash"
+      },
+      "human_author": "Miguel Angel Acevedo <acevedomiguel@gmail.com>"
+    }
+  }
+}
