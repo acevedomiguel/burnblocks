@@ -1,0 +1,25 @@
+# Local worktrees and agent scratch
+/.worktrees/
+/.superpowers/
+/docs/superpowers/
+
+# Build output
+/burnblocks
+/burnblocks.exe
+/dist/
+
+# Node release tooling
+node_modules/
+
+# Editors and OS files
+.DS_Store
+.idea/
+.vscode/
+*.swp
+
+# Local runtime artifacts that must never be committed
+management-token
+api-key
+token
+config.local.yaml
+snapshot.json
