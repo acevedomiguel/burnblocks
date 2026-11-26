@@ -135,5 +135,7 @@ EOF
 cd "$consumer_dir"
 go mod init example.com/burnblocks-consumer >/dev/null
 go mod edit -replace=github.com/acevedomiguel/burnblocks="$repo_root"
-GOPROXY=off GOSUMDB=off GOTOOLCHAIN=local go mod tidy
+# Resolve the module graph through the normal proxy. Only the build and run are
+# offline, which is what shows the package itself reaches no network.
+go mod tidy
 GOPROXY=off GOSUMDB=off GOTOOLCHAIN=local go run .
