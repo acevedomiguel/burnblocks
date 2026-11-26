@@ -1,0 +1,170 @@
+openrouter/doc.go
+  s_58b6f55c0833f4::t_9174f7df78e7ba 1-6,10-13,14
+  s_58b6f55c0833f4::t_d5d3fe7f4f93fe 7-9
+commitlint.config.cjs
+  s_58b6f55c0833f4::t_bc21b3a4444900 1-3
+kimi/doc.go
+  s_58b6f55c0833f4::t_c1f4cb0424bde4 1-15
+LICENSE
+  s_58b6f55c0833f4::t_cd909702994f11 1-21
+AGENTS.md
+  s_58b6f55c0833f4::t_4000420fc16ab6 1-12,29-130
+Makefile
+  s_58b6f55c0833f4::t_ebadad0810ede2 1-29
+.gitignore
+  s_58b6f55c0833f4::t_5431db7b3d7f41 1-25
+.github/workflows/commitlint.yml
+  s_58b6f55c0833f4::t_c7ee5f3b2c65e1 1-27
+SECURITY.md
+  s_58b6f55c0833f4::t_8135ff515001ad 1-82
+cmd/burnblocks/main.go
+  s_58b6f55c0833f4::t_a57ef8c8309bfd 1-51
+scripts/check-release-notes.mjs
+  s_58b6f55c0833f4::t_67e5b4e0eea344 1-50
+.github/workflows/ci.yml
+  s_58b6f55c0833f4::t_e1dfcc06fb27d9 1-134
+  s_58b6f55c0833f4::t_05122d3615adca 135-151
+package.json
+  s_58b6f55c0833f4::t_c4f9f1962e4357 1-27
+.releaserc.json
+  s_58b6f55c0833f4::t_4672bebac7eaa1 1-39
+.nvmrc
+  s_58b6f55c0833f4::t_137819947a3d24 1
+README.md
+  s_58b6f55c0833f4::t_27c9a67406280d 1-27,33-67
+  s_58b6f55c0833f4::t_65f3f227680e5f 28-32
+.github/workflows/release.yml
+  s_58b6f55c0833f4::t_02da3392b3a0ea 1-20,22-72,82-113,117-194
+cmd/burnblocks/main_test.go
+  s_58b6f55c0833f4::t_65313de8491693 1-71
+opencode.jsonc
+  s_58b6f55c0833f4::t_d08f35f1d35d90 1-11
+scripts/check-module-version.mjs
+  s_58b6f55c0833f4::t_8e314cdfd1ad84 1-41
+go.mod
+  s_58b6f55c0833f4::t_1abffaf0c7730a 1-3
+  s_58b6f55c0833f4::t_98a5c443c95394 4-14
+scripts/check-module-version.test.mjs
+  s_58b6f55c0833f4::t_5203d45d01cfd4 1-35
+.goreleaser.yaml
+  s_58b6f55c0833f4::t_69e92b8440f178 1-87
+.editorconfig
+  s_58b6f55c0833f4::t_68adfd4b80830d 1-19
+CONTRIBUTING.md
+  s_58b6f55c0833f4::t_17fe0a0809fea5 1-62
+package-lock.json
+  s_58b6f55c0833f4::t_8c02df2b5b945e 1-6484
+internal/openrouter/domain/aggregate.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-110
+openrouter/json_test.go
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 1
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 2-9,11-13,16,18,20-23,25-57,59-64,66-69
+  s_58b6f55c0833f4::t_cfbbbf8fa2cb65 10,14-15,17,19,24,58,65
+openrouter/fetch.go
+  s_58b6f55c0833f4::t_9dd1925d274919 1-59
+internal/openrouter/config/config_test.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-354
+internal/openrouter/config/perm_windows.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-7
+internal/openrouter/config/perm_unix.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-7
+internal/openrouter/projection/json.go
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 1,8
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 2-7,9-132
+internal/openrouter/wire/client.go
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 1
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 2-474
+internal/openrouter/domain/range_test.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-114
+internal/openrouter/projection/fetch.go
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 1,10-11
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 2-9,12-308
+internal/openrouter/config/paths.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-66
+openrouter/json.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 2-5,7-10,16-19,21-24,26-42
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 1,6,11-15,20,25
+openrouter/fetch_test.go
+  s_58b6f55c0833f4::t_9dd1925d274919 1-99
+internal/openrouter/wire/errors.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 2-81
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 1
+internal/openrouter/credentials/credentials_test.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-547
+internal/openrouter/domain/runway_test.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-193
+internal/openrouter/credentials/save.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-149
+internal/openrouter/projection/redact.go
+  s_58b6f55c0833f4::t_befb397e8ae518 1-10
+internal/openrouter/wire/endpoints_test.go
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 1
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 2-186
+internal/openrouter/config/config.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-280
+internal/openrouter/domain/snapshot.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-117
+internal/openrouter/credentials/redact.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-93
+internal/openrouter/domain/range.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-53
+internal/openrouter/credentials/perm_unix.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-7
+openrouter/example_test.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 2-6,8-10,12-17
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 1
+  s_58b6f55c0833f4::t_cfbbbf8fa2cb65 7,11
+internal/openrouter/wire/helpers_test.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 2-7
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 1
+internal/openrouter/domain/runway.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-94
+openrouter/access.go
+  s_58b6f55c0833f4::t_cfbbbf8fa2cb65 128-129
+  s_58b6f55c0833f4::t_3f31119f3dffaf 1-77,87-127,130-133
+  s_58b6f55c0833f4::t_e9e8e1567c46e9 78-86
+internal/openrouter/wire/types.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 2-172
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 1
+internal/openrouter/credentials/keyring_os.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-47
+internal/openrouter/wire/analytics_decode_test.go
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 1
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 2-118
+scripts/check-openrouter-consumer.sh
+  s_58b6f55c0833f4::t_4beaafebe312ca 1-137
+internal/openrouter/cache/cache.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-10,12-117
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 11
+internal/openrouter/credentials/store.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-189
+internal/openrouter/wire/client_test.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 2-272
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 1
+openrouter/client.go
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 1,7,12-18,22,26-36,41,46,51,56,61,66,71,76
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 2-6,8-11,19-21,23-25,37-40,42-45,47-50,52-55,57-60,62-65,67-70,72-75,77
+internal/openrouter/cache/cache_test.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-11,13-158
+  s_58b6f55c0833f4::t_b6b3da8dd309ec 12
+internal/openrouter/credentials/perm_windows.go
+  s_58b6f55c0833f4::t_ff9bfccdf5060a 1-7
+go.sum
+  s_58b6f55c0833f4::t_27d84654192258 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "c2933406e94130713a287f664d45b93f1e5052d4",
+  "prompts": {},
+  "sessions": {
+    "s_58b6f55c0833f4": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_de8e37bb1ffeg7g6B9LpPtCNn5",
+        "model": "deepseek/deepseek-v4.1-flash"
+      },
+      "human_author": "Miguel Angel Acevedo <acevedomiguel@gmail.com>"
+    }
+  }
+}
