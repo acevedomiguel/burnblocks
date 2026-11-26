@@ -131,3 +131,7 @@ var (
 
 // NewCacheStore returns a cache rooted at path.
 func NewCacheStore(path string) *CacheStore { return cache.NewStore(path) }
+
+// WriteSample writes the documented sample configuration to path, tightening
+// its permissions. It is the backing operation for a `config reset` command.
+func WriteSample(path string) error { return config.WriteSample(path) }
