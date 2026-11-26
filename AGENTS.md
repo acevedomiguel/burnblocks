@@ -10,6 +10,22 @@ terminal UI and import these packages for provider access, calculations, and
 persistence. No Charm, Bubble Tea, Lipgloss, or other UI dependency belongs in
 this module.
 
+## Hard rules (MUST)
+
+- **DO NOT EXPOSE PRIVATE INFO.** Real account data, credentials, tokens, API
+  keys, authorization-header values, raw provider responses, account emails or
+  identifiers, balances, quotas, spend, and usage figures MUST NOT appear in
+  code, logs, errors, JSON output, cache files, test output, tests, fixtures,
+  screenshots, documentation, commit messages, issue text, or release
+  artifacts.
+- Only synthetic, hand-authored data MAY be committed to this repository. Real
+  data MAY appear only in a user's own terminal, in their own local cache, or in
+  their own `--json` output at runtime, and nowhere else.
+- Redact by default. Route every user-visible error through the redaction helper
+  before it is written, and treat any unredacted provider payload as a defect.
+- If a change could surface private information anywhere it is committed or
+  transmitted, it MUST NOT be made.
+
 ## Product and credential boundaries
 
 - Burn Blocks is read-only. It never sends inference requests, purchases credit
