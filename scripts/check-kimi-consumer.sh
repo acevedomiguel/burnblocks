@@ -128,8 +128,37 @@ func main() {
 		panic("redaction did not alter a secret-shaped value")
 	}
 
+	// BuildSnapshot is the post-read half of Fetch, for callers that perform
+	// their own read and substitute a clock only when the provider omitted the
+	// observation time.
+	reading := kimi.UsageReading{
+		ObservedAt: now,
+		Quotas: map[kimi.QuotaKey]kimi.QuotaReading{
+			kimi.QuotaLimit5h: {Source: kimi.SourceRatio, UsedRatio: ptr(0.5), ResetAt: ptr(now.Add(3 * time.Hour))},
+		},
+	}
+	var built kimi.StoredState = kimi.EmptyStoredState()
+	builtSnap := kimi.BuildSnapshot(reading, &built)
+	if builtSnap.GeneratedAt != now {
+		panic("BuildSnapshot did not stamp the reading time")
+	}
+	if _, ok := builtSnap.Runways[kimi.QuotaLimit5h]; !ok {
+		panic("BuildSnapshot did not derive a runway")
+	}
+	if built.Snapshot == nil || built.CacheVersion != kimi.CacheSchemaVersion {
+		panic("BuildSnapshot did not update state")
+	}
+
+	// Building a source accepts a version option and performs no I/O until
+	// ReadUsage is called.
+	if _, err := kimi.NewSource(kimi.DefaultBaseURL, "synthetic-token", kimi.WithVersion("test-version")); err != nil {
+		panic(err)
+	}
+
 	fmt.Println("external kimi consumer passed")
 }
+
+func ptr[T any](v T) *T { return &v }
 EOF
 
 cd "$consumer_dir"
