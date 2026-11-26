@@ -126,6 +126,25 @@ func main() {
 		panic("redaction did not alter a secret-shaped value")
 	}
 
+	// Headless calculation surface the terminal UI relies on.
+	rng := openrouter.DisplayRange(now)
+	if rng.Days() != 30 {
+		panic("DisplayRange should span 30 days")
+	}
+	if daily := openrouter.AggregateDaily(rng, nil); len(daily) != 30 {
+		panic("AggregateDaily should return one bucket per day")
+	}
+	models := openrouter.SortModels([]openrouter.ModelUsage{
+		{Model: "zzz", CreditSpend: 1},
+		{Model: "aaa", CreditSpend: 2},
+	})
+	if models[0].Model != "aaa" {
+		panic("SortModels should order by spend descending")
+	}
+	if top := openrouter.TopModels(models, 1); len(top) != 1 {
+		panic("TopModels should limit the rows")
+	}
+
 	fmt.Println("external openrouter consumer passed")
 }
 EOF
