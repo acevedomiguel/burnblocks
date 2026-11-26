@@ -25,10 +25,12 @@ a cache implicitly, and never write to stdout or stderr.
 
 ## Status
 
-Scaffold. The package boundaries, CLI shell, build, CI, and release pipeline are
-in place. The provider engines move here from RouteBurn and KimiBurn, and the
-`burnblocks` command gains its `kimi` and `openrouter` subcommands, in follow-up
-changes.
+The Kimi engine is in place. The `kimi` package exposes the usage source,
+snapshot and runway state, schema-1 JSON, the caller-owned cache, configuration,
+and credential helpers, with the synthetic test suite ported from KimiBurn and
+an external consumer check. The OpenRouter engine, the `burnblocks kimi` and
+`burnblocks openrouter` subcommands, and the consumer migrations are follow-up
+work.
 
 ## Requirements
 
