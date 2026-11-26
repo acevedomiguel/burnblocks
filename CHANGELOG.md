@@ -1,3 +1,9 @@
+## [1.3.0](https://github.com/acevedomiguel/burnblocks/compare/v1.2.0...v1.3.0) (2026-11-26)
+
+### Features
+
+* add a kimi build-snapshot helper and source version option ([#4](https://github.com/acevedomiguel/burnblocks/issues/4)) ([9c0d70e](https://github.com/acevedomiguel/burnblocks/commit/9c0d70e144ac68733d1f59265534c6e437c56c4e))
+
 ## [1.2.0](https://github.com/acevedomiguel/burnblocks/compare/v1.1.0...v1.2.0) (2026-11-26)
 
 ### Features
