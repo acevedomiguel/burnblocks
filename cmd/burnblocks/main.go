@@ -7,6 +7,7 @@
 package main
 
 import (
+	"errors"
 	"flag"
 	"fmt"
 	"io"
@@ -68,7 +69,7 @@ func runWithDeps(args []string, stdout, stderr io.Writer, d deps) int {
 		fmt.Fprintf(stdout, "burnblocks version %s\n", version)
 		return exitOK
 	case "--help", "-h", "help":
-		fmt.Fprint(stdout, usage)
+		printUsage(stdout)
 		return exitOK
 	case "kimi":
 		return runKimi(args[1:], stdout, stderr, d)
@@ -91,6 +92,9 @@ type options struct {
 	jsonOutput bool
 	configPath string
 	noCache    bool
+	// help records an explicit help request so it can exit 0 instead of being
+	// reported as a usage error.
+	help bool
 }
 
 // parseOptions parses one subcommand's flags. It rejects positional arguments
@@ -104,6 +108,9 @@ func parseOptions(name string, args []string) (options, error) {
 	fs.StringVar(&opts.configPath, "config", "", "use an explicit configuration file")
 	fs.BoolVar(&opts.noCache, "no-cache", false, "do not read or write the local cache")
 	if err := fs.Parse(args); err != nil {
+		if errors.Is(err, flag.ErrHelp) {
+			return options{help: true}, nil
+		}
 		return options{}, &usageError{msg: err.Error()}
 	}
 	if fs.NArg() > 0 {
@@ -111,6 +118,9 @@ func parseOptions(name string, args []string) (options, error) {
 	}
 	return opts, nil
 }
+
+// printUsage writes the usage block to w.
+func printUsage(w io.Writer) { fmt.Fprint(w, usage) }
 
 // deps carries the injectable seams the CLI needs. Production builds get real
 // implementations; tests inject fakes so no test touches the keyring, the

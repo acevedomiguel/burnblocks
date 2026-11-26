@@ -238,3 +238,20 @@ func TestKimiNoCacheUsesDisabledStore(t *testing.T) {
 		t.Error("--no-cache must not write the caller-provided store")
 	}
 }
+
+// A help request is not a usage error: it prints the usage block on stdout and
+// exits 0.
+func TestKimiHelpExitsZero(t *testing.T) {
+	d := kimiTestDeps(t, fakeKimiSource{}, &memoryState{})
+
+	var stdout, stderr bytes.Buffer
+	if code := runWithDeps([]string{"kimi", "--help"}, &stdout, &stderr, d); code != exitOK {
+		t.Fatalf("exit = %d, want %d", code, exitOK)
+	}
+	if !strings.Contains(stdout.String(), "Usage:") {
+		t.Errorf("stdout = %q, want the usage block", stdout.String())
+	}
+	if stderr.Len() != 0 {
+		t.Errorf("stderr = %q, want empty for a help request", stderr.String())
+	}
+}

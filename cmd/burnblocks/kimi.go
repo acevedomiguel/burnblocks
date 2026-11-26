@@ -20,6 +20,10 @@ func runKimi(args []string, stdout, stderr io.Writer, d deps) int {
 	if err != nil {
 		return reportUsageError(stderr, err)
 	}
+	if opts.help {
+		printUsage(stdout)
+		return exitOK
+	}
 
 	paths, err := d.kimiPaths()
 	if err != nil {
