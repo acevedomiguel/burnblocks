@@ -1,3 +1,9 @@
+## [1.6.0](https://github.com/acevedomiguel/burnblocks/compare/v1.5.0...v1.6.0) (2026-11-26)
+
+### Features
+
+* expose WriteSample on the openrouter package ([#7](https://github.com/acevedomiguel/burnblocks/issues/7)) ([a2e63db](https://github.com/acevedomiguel/burnblocks/commit/a2e63db8fdb736b824241ea649fb380284151a60))
+
 ## [1.5.0](https://github.com/acevedomiguel/burnblocks/compare/v1.4.0...v1.5.0) (2026-11-26)
 
 ### Features
