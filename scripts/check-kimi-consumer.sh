@@ -155,6 +155,18 @@ func main() {
 		panic(err)
 	}
 
+	// Configuration and platform surface the apps and the CLI rely on.
+	if err := kimi.WriteSample(filepath.Join(dir, "config.yaml")); err != nil {
+		panic(err)
+	}
+	if kimi.DefaultRefreshInterval != 30*time.Second {
+		panic("unexpected default refresh interval")
+	}
+	if len(kimi.CanonicalQuotaKeys) != 4 {
+		panic("expected four canonical quota keys")
+	}
+	_ = kimi.PermissionsAreEnforced
+
 	fmt.Println("external kimi consumer passed")
 }
 

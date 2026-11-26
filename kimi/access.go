@@ -6,6 +6,7 @@ import (
 	"github.com/acevedomiguel/burnblocks/internal/kimi/cache"
 	"github.com/acevedomiguel/burnblocks/internal/kimi/config"
 	"github.com/acevedomiguel/burnblocks/internal/kimi/credentials"
+	"github.com/acevedomiguel/burnblocks/internal/kimi/domain"
 )
 
 // TokenStore resolves and persists the Kimi Code token from Burn Blocks-owned
@@ -97,3 +98,20 @@ func FormatInterval(d time.Duration) string { return config.FormatInterval(d) }
 func SaveRefreshInterval(path string, interval time.Duration) error {
 	return config.SaveRefreshInterval(path, interval)
 }
+
+// DefaultRefreshInterval is the interval used when neither the configuration
+// file nor the environment sets one.
+const DefaultRefreshInterval = config.DefaultRefreshInterval
+
+// WriteSample writes the documented sample configuration to path, tightening
+// its permissions. It is the backing operation for a `config reset` command.
+func WriteSample(path string) error { return config.WriteSample(path) }
+
+// PermissionsAreEnforced reports whether the OS exposes POSIX permission bits,
+// so a caller can explain why a loose fallback file is or is not refused.
+const PermissionsAreEnforced = credentials.PermissionsAreEnforced
+
+// CanonicalQuotaKeys is the complete provider-neutral quota set, in a stable
+// order. Public JSON always includes all of them, using null for an unreported
+// quota.
+var CanonicalQuotaKeys = domain.CanonicalQuotaKeys
