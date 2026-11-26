@@ -1,3 +1,9 @@
+## [1.7.0](https://github.com/acevedomiguel/burnblocks/compare/v1.6.0...v1.7.0) (2026-11-26)
+
+### Features
+
+* add the kimi and openrouter status subcommands ([#8](https://github.com/acevedomiguel/burnblocks/issues/8)) ([b9d6f0a](https://github.com/acevedomiguel/burnblocks/commit/b9d6f0a5c955c65b4ad6159e7f8781d57722c787))
+
 ## [1.6.0](https://github.com/acevedomiguel/burnblocks/compare/v1.5.0...v1.6.0) (2026-11-26)
 
 ### Features
