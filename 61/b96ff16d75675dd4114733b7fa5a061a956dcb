@@ -1,0 +1,22 @@
+scripts/check-kimi-consumer.sh
+  s_58b6f55c0833f4::t_23dc84ff6a7453 158-169
+kimi/access.go
+  s_58b6f55c0833f4::t_4ad03f9c77735a 9
+  s_58b6f55c0833f4::t_e96b0bff144b3b 101-117
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "61b96ff16d75675dd4114733b7fa5a061a956dcb",
+  "prompts": {},
+  "sessions": {
+    "s_58b6f55c0833f4": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_de8e37bb1ffeg7g6B9LpPtCNn5",
+        "model": "deepseek/deepseek-v4.1-flash"
+      },
+      "human_author": "Miguel Angel Acevedo <acevedomiguel@gmail.com>"
+    }
+  }
+}
