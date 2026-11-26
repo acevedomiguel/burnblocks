@@ -1,0 +1,30 @@
+internal/openrouter/domain/aggregate_test.go
+  s_58b6f55c0833f4::t_b8c49720165a98 1-92
+scripts/check-openrouter-consumer.sh
+  s_58b6f55c0833f4::t_874385a1a5b7c2 129-147
+internal/openrouter/projection/fetch_test.go
+  s_58b6f55c0833f4::t_b8c49720165a98 1-90,92-119,121-127,129-140,142-173,175-203,205-231,233-245,247-267,269-286,288-298
+  s_58b6f55c0833f4::t_29f52a86fa0a9d 91,120,128,141,174,204,232,246,268,287
+internal/openrouter/projection/json_helper_test.go
+  s_58b6f55c0833f4::t_b8c49720165a98 1-54
+internal/openrouter/projection/json_test.go
+  s_58b6f55c0833f4::t_b8c49720165a98 1-141
+openrouter/calc.go
+  s_58b6f55c0833f4::t_39b4fdf0158599 1-25
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "5bf00c4113a29dcb6247031e31c6483e981dc460",
+  "prompts": {},
+  "sessions": {
+    "s_58b6f55c0833f4": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_de8e37bb1ffeg7g6B9LpPtCNn5",
+        "model": "deepseek/deepseek-v4.1-flash"
+      },
+      "human_author": "Miguel Angel Acevedo <acevedomiguel@gmail.com>"
+    }
+  }
+}
