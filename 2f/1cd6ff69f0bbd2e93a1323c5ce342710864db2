@@ -1,0 +1,30 @@
+scripts/check-kimi-consumer.sh
+  s_58b6f55c0833f4::t_5f1e409849aaf6 131-157,160-161
+kimi/fetch.go
+  s_58b6f55c0833f4::t_0f58fa36f3278a 14-22,38-54
+kimi/source.go
+  s_58b6f55c0833f4::t_2e5ee06932b144 13,33-39,57-58
+  s_58b6f55c0833f4::t_12b3be95ae207f 59
+internal/kimi/projection/testdata/live.golden
+  s_58b6f55c0833f4::t_ee9a617e3a59ee 1-78
+internal/kimi/projection/json_test.go
+  s_58b6f55c0833f4::t_ee9a617e3a59ee 1-96
+internal/kimi/projection/snapshot_test.go
+  s_58b6f55c0833f4::t_ee9a617e3a59ee 1-40
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "2f1cd6ff69f0bbd2e93a1323c5ce342710864db2",
+  "prompts": {},
+  "sessions": {
+    "s_58b6f55c0833f4": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_de8e37bb1ffeg7g6B9LpPtCNn5",
+        "model": "deepseek/deepseek-v4.1-flash"
+      },
+      "human_author": "Miguel Angel Acevedo <acevedomiguel@gmail.com>"
+    }
+  }
+}
