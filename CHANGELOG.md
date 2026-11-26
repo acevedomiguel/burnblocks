@@ -1,3 +1,9 @@
+## [1.7.1](https://github.com/acevedomiguel/burnblocks/compare/v1.7.0...v1.7.1) (2026-11-26)
+
+### Bug Fixes
+
+* exit cleanly when a subcommand is asked for help ([b453153](https://github.com/acevedomiguel/burnblocks/commit/b45315315a28db61827989ee2fd2093f443f5415))
+
 ## [1.7.0](https://github.com/acevedomiguel/burnblocks/compare/v1.6.0...v1.7.0) (2026-11-26)
 
 ### Features
