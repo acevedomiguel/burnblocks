@@ -1,3 +1,9 @@
+## [1.5.0](https://github.com/acevedomiguel/burnblocks/compare/v1.4.0...v1.5.0) (2026-11-26)
+
+### Features
+
+* expose the openrouter calculation surface and port its tests ([#6](https://github.com/acevedomiguel/burnblocks/issues/6)) ([1e2b11e](https://github.com/acevedomiguel/burnblocks/commit/1e2b11ec6c3f3875f4253223ad5c909c3c05c18b))
+
 ## [1.4.0](https://github.com/acevedomiguel/burnblocks/compare/v1.3.0...v1.4.0) (2026-11-26)
 
 ### Features
