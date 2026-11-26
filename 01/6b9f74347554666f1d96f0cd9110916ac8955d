@@ -1,0 +1,210 @@
+openrouter/doc.go
+  s_58b6f55c0833f4::t_9174f7df78e7ba 1-15
+commitlint.config.cjs
+  s_58b6f55c0833f4::t_bc21b3a4444900 1-3
+kimi/doc.go
+  s_58b6f55c0833f4::t_c1f4cb0424bde4 3,9-10,13
+  s_58b6f55c0833f4::t_5538f97613b715 1-2,6-8,11-12
+  s_58b6f55c0833f4::t_73a8095d57ce83 4-5
+LICENSE
+  s_58b6f55c0833f4::t_cd909702994f11 1-21
+AGENTS.md
+  s_58b6f55c0833f4::t_4000420fc16ab6 1-12,29-130
+  s_58b6f55c0833f4::t_55e1832e60cb4a 13-28
+Makefile
+  s_58b6f55c0833f4::t_ebadad0810ede2 1-29
+.gitignore
+  s_58b6f55c0833f4::t_5431db7b3d7f41 1-25
+.github/workflows/commitlint.yml
+  s_58b6f55c0833f4::t_c7ee5f3b2c65e1 1-27
+SECURITY.md
+  s_58b6f55c0833f4::t_8135ff515001ad 1-82
+cmd/burnblocks/main.go
+  s_58b6f55c0833f4::t_a57ef8c8309bfd 1-51
+scripts/check-release-notes.mjs
+  s_58b6f55c0833f4::t_67e5b4e0eea344 1-50
+.github/workflows/ci.yml
+  s_58b6f55c0833f4::t_e1dfcc06fb27d9 1-64,82-151
+  s_58b6f55c0833f4::t_f34a6b91501e36 65-75,79-81
+  s_58b6f55c0833f4::t_1a771465fcdca2 76-78
+package.json
+  s_58b6f55c0833f4::t_c4f9f1962e4357 1-27
+.releaserc.json
+  s_58b6f55c0833f4::t_4672bebac7eaa1 1-39
+.nvmrc
+  s_58b6f55c0833f4::t_137819947a3d24 1
+README.md
+  s_58b6f55c0833f4::t_27c9a67406280d 1-27,34-68
+  s_58b6f55c0833f4::t_55ce7f043f750c 28-33
+.github/workflows/release.yml
+  s_58b6f55c0833f4::t_02da3392b3a0ea 1-20,22-72,82-113,117-194
+cmd/burnblocks/main_test.go
+  s_58b6f55c0833f4::t_65313de8491693 1-71
+opencode.jsonc
+  s_58b6f55c0833f4::t_d08f35f1d35d90 1-11
+scripts/check-module-version.mjs
+  s_58b6f55c0833f4::t_8e314cdfd1ad84 1-41
+go.mod
+  s_58b6f55c0833f4::t_1abffaf0c7730a 1-3
+  s_58b6f55c0833f4::t_95f7b656ab05d8 4-14
+scripts/check-module-version.test.mjs
+  s_58b6f55c0833f4::t_5203d45d01cfd4 1-35
+.goreleaser.yaml
+  s_58b6f55c0833f4::t_69e92b8440f178 1-87
+.editorconfig
+  s_58b6f55c0833f4::t_68adfd4b80830d 1-19
+CONTRIBUTING.md
+  s_58b6f55c0833f4::t_17fe0a0809fea5 1-62
+package-lock.json
+  s_58b6f55c0833f4::t_8c02df2b5b945e 1-6484
+internal/kimi/cache/cache.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-10,12-133
+  s_58b6f55c0833f4::t_112dc68c8f3111 11
+internal/kimi/credentials/redact_test.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-95
+internal/kimi/config/config_test.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-498
+internal/kimi/config/perm_unix.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-7
+internal/kimi/credentials/store_test.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-604
+internal/kimi/runway/history.go
+  s_58b6f55c0833f4::t_112dc68c8f3111 8
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-7,9-54
+internal/kimi/wire/client.go
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 4
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-3,5-21,24-431
+  s_58b6f55c0833f4::t_112dc68c8f3111 22-23
+internal/kimi/credentials/keyring_test.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-34
+kimi/example_test.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 2-10,12-16,18-23,25-46
+  s_58b6f55c0833f4::t_95f7b656ab05d8 11,17,24
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 1
+internal/kimi/credentials/redact.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-90
+scripts/check-kimi-consumer.sh
+  s_58b6f55c0833f4::t_61f0f0d769b1f3 138
+  s_58b6f55c0833f4::t_8a1626d0c10235 1-137,139
+internal/kimi/projection/snapshot.go
+  s_58b6f55c0833f4::t_112dc68c8f3111 8
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 2
+  s_58b6f55c0833f4::t_73a8095d57ce83 1,3-7,9-48
+internal/kimi/cache/perm_windows.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-7
+internal/kimi/cache/replace_unix.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-7
+internal/kimi/cache/perm_unix.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-5
+internal/kimi/cache/replace_windows.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-25
+internal/kimi/credentials/perm_windows.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-7
+internal/kimi/credentials/store.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-191
+internal/kimi/credentials/replace_windows_test.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-59
+internal/kimi/credentials/perm_unix.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-7
+kimi/fetch_test.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 2-10,12-14,16-19,21-26,28-29,31,35-38,40-45,48-56,58-60,62-63,65-71,73-75,77-82,85-86,89-91,93-94,97-100,102-107,109-113,116-117,119-121
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 1
+  s_58b6f55c0833f4::t_95f7b656ab05d8 11,15,20,27,30,32-34,39,46-47,57,61,64,72,76,83-84,87-88,92,95-96,101,108,114-115,118
+internal/kimi/config/paths.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-85
+kimi/json.go
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 1,11,14,19
+  s_58b6f55c0833f4::t_112dc68c8f3111 6
+  s_58b6f55c0833f4::t_73a8095d57ce83 2-5,7-10,12-13,15-18,20
+internal/kimi/config/perm_windows.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-7
+internal/kimi/projection/json.go
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 1
+  s_58b6f55c0833f4::t_112dc68c8f3111 12
+  s_58b6f55c0833f4::t_73a8095d57ce83 2-11,13-157
+internal/kimi/runway/runway.go
+  s_58b6f55c0833f4::t_112dc68c8f3111 7
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-6,8-193
+internal/kimi/domain/usage.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-89
+internal/kimi/credentials/replace_unix_test.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-31
+kimi/source_test.go
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 1
+  s_58b6f55c0833f4::t_73a8095d57ce83 2-11,13-44,46-47,50-74,76-79,81-88,91-92,95-103,105-117,119-122
+  s_58b6f55c0833f4::t_95f7b656ab05d8 12,45,48-49,75,80,89-90,93-94,104,118
+kimi/types.go
+  s_58b6f55c0833f4::t_112dc68c8f3111 4-6
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 1,49,82,84,86,88,90,92,94,96,98,100,102,104
+  s_58b6f55c0833f4::t_73a8095d57ce83 2-3,7-48,50-81,83,85,87,89,91,93,95,97,99,101,103,105-111
+internal/kimi/domain/state.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-62
+internal/kimi/credentials/replace_unix.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-9
+internal/kimi/config/paths_test.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-138
+internal/kimi/wire/decode.go
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 1
+  s_58b6f55c0833f4::t_112dc68c8f3111 11-12
+  s_58b6f55c0833f4::t_73a8095d57ce83 2-10,13-353
+internal/kimi/cache/cache_test.go
+  s_58b6f55c0833f4::t_112dc68c8f3111 14-15
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-13,16-210
+internal/kimi/runway/history_test.go
+  s_58b6f55c0833f4::t_112dc68c8f3111 7
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-6,8-58
+internal/kimi/credentials/save.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-92
+kimi/json_test.go
+  s_58b6f55c0833f4::t_95f7b656ab05d8 11,23-24,26-27,29-30,33,36-37,80-81
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 1
+  s_58b6f55c0833f4::t_73a8095d57ce83 2-10,12-22,25,28,31-32,34-35,38-79,82-85
+kimi/fetch.go
+  s_58b6f55c0833f4::t_112dc68c8f3111 7-8
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 1,27
+  s_58b6f55c0833f4::t_73a8095d57ce83 2-6,9-26,28-43
+kimi/source.go
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 1,42,44,47,49
+  s_58b6f55c0833f4::t_73a8095d57ce83 2-6,8-41,43,45-46,48,50
+  s_58b6f55c0833f4::t_112dc68c8f3111 7
+internal/kimi/credentials/replace_windows.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-32
+internal/kimi/runway/runway_test.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-7,9-243
+  s_58b6f55c0833f4::t_112dc68c8f3111 8
+internal/kimi/wire/decode_test.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 2-9,11-397
+  s_58b6f55c0833f4::t_112dc68c8f3111 10
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 1
+internal/kimi/wire/errors.go
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 1
+  s_58b6f55c0833f4::t_73a8095d57ce83 2-77
+internal/kimi/wire/client_test.go
+  s_58b6f55c0833f4::t_b1a472d72a1d9d 1
+  s_58b6f55c0833f4::t_73a8095d57ce83 2-19,21-925
+  s_58b6f55c0833f4::t_112dc68c8f3111 20
+kimi/access.go
+  s_58b6f55c0833f4::t_5b9c40843848ba 1-99
+internal/kimi/config/config.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-314
+internal/kimi/credentials/keyring_os.go
+  s_58b6f55c0833f4::t_73a8095d57ce83 1-50
+go.sum
+  s_58b6f55c0833f4::t_7012077fef3029 1-20
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "016b9f74347554666f1d96f0cd9110916ac8955d",
+  "prompts": {},
+  "sessions": {
+    "s_58b6f55c0833f4": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_de8e37bb1ffeg7g6B9LpPtCNn5",
+        "model": "deepseek/deepseek-v4.1-flash"
+      },
+      "human_author": "Miguel Angel Acevedo <acevedomiguel@gmail.com>"
+    }
+  }
+}
