@@ -18,6 +18,7 @@ jobs:
     runs-on: ubuntu-latest
     outputs:
       version: ${{ steps.semantic.outputs.version }}
+      tap_enabled: ${{ steps.tap.outputs.enabled }}
     steps:
       - name: Checkout complete history
         uses: actions/checkout@v7
@@ -69,6 +70,15 @@ jobs:
           goreleaser release --snapshot --clean
           git diff --exit-code
 
+      - name: Detect Homebrew tap token
+        id: tap
+        run: |
+          if [ -n "${{ secrets.HOMEBREW_TAP_TOKEN }}" ]; then
+            echo "enabled=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "enabled=false" >> "$GITHUB_OUTPUT"
+          fi
+
       - name: Determine version and publish release
         id: semantic
         run: ./node_modules/.bin/semantic-release
@@ -101,7 +111,9 @@ jobs:
 
   verify-homebrew:
     needs: release
-    if: needs.release.outputs.version != ''
+    # The cask is only pushed when HOMEBREW_TAP_TOKEN is configured, so without
+    # it there is nothing to verify and the tap repository may not exist yet.
+    if: needs.release.outputs.version != '' && needs.release.outputs.tap_enabled == 'true'
     runs-on: macos-latest
     env:
       EXPECTED_VERSION: ${{ needs.release.outputs.version }}
