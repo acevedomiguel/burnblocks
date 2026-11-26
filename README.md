@@ -35,8 +35,70 @@ check, and KimiBurn, RouteBurn, and DashBurn all consume these packages.
 
 ## Requirements
 
+The Homebrew cask and the prebuilt archives need no toolchain. Building from
+source, or embedding the libraries, needs:
+
 - Go 1.26.0 or newer (`go.mod` declares the minimum).
 - Node.js as pinned in `.nvmrc`, only for release tooling.
+
+## Installation
+
+### Homebrew (macOS and Linux)
+
+```bash
+brew tap acevedomiguel/burnblocks
+brew install --cask burnblocks
+burnblocks --version
+```
+
+Upgrades arrive through the same tap:
+
+```bash
+brew update
+brew upgrade --cask burnblocks
+```
+
+The cask downloads a prebuilt binary rather than compiling from source. That
+binary is not notarized by Apple, so the cask clears the macOS quarantine flag
+after staging; without that step Gatekeeper would kill the binary on first run.
+The tap is a third-party tap, so Homebrew asks you to trust it once:
+
+```bash
+brew trust --tap acevedomiguel/burnblocks
+```
+
+### Go
+
+The command:
+
+```bash
+go install github.com/acevedomiguel/burnblocks/cmd/burnblocks@latest
+```
+
+The libraries, for embedding either engine in your own program:
+
+```bash
+go get github.com/acevedomiguel/burnblocks/kimi
+go get github.com/acevedomiguel/burnblocks/openrouter
+```
+
+### Prebuilt binaries
+
+Every release publishes Linux, macOS, and Windows archives plus a `checksums.txt`
+file on the GitHub Releases page. Verify a download with:
+
+```bash
+sha256sum -c checksums.txt --ignore-missing
+```
+
+### From source
+
+```bash
+git clone https://github.com/acevedomiguel/burnblocks.git
+cd burnblocks
+make build
+./burnblocks --version
+```
 
 ## Development
 
