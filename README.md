@@ -25,12 +25,15 @@ a cache implicitly, and never write to stdout or stderr.
 
 ## Status
 
-The Kimi engine is in place. The `kimi` package exposes the usage source,
-snapshot and runway state, schema-1 JSON, the caller-owned cache, configuration,
-and credential helpers, with the synthetic test suite ported from KimiBurn and
-an external consumer check. The OpenRouter engine, the `burnblocks kimi` and
-`burnblocks openrouter` subcommands, and the consumer migrations are follow-up
-work.
+## Status
+
+Both provider engines live here now. `kimi` exposes the usage source, snapshot
+and runway state, schema-1 JSON, the caller-owned cache, configuration, and
+credential helpers. `openrouter` exposes the read-only API boundary, snapshot
+fetch, schema-2 JSON, the aggregate-only cache, configuration, and credential
+helpers. Each carries its original synthetic test suite and an external consumer
+check. The `burnblocks kimi` and `burnblocks openrouter` subcommands and the
+consumer migrations are follow-up work.
 
 ## Requirements
 
@@ -50,7 +53,7 @@ make snapshot  # local GoReleaser snapshot
 
 Provider subcommands are not available yet; `burnblocks --version` reports the
 version. The command line grows `burnblocks kimi` and `burnblocks openrouter`
-once the engines land.
+next.
 
 ## Security
 

@@ -149,3 +149,20 @@ jobs:
         run: npm run check:module-version
       - name: Render release notes from fixture commits
         run: npm run check:release-notes
+
+  library-consumer-openrouter:
+    name: external openrouter consumer
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+
+      - uses: actions/setup-go@v7
+        with:
+          go-version-file: go.mod
+          cache: true
+
+      - name: Warm the module cache
+        run: go mod download
+
+      - name: Fetch and project from a separate module
+        run: bash scripts/check-openrouter-consumer.sh
