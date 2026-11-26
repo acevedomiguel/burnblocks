@@ -25,15 +25,13 @@ a cache implicitly, and never write to stdout or stderr.
 
 ## Status
 
-## Status
-
-Both provider engines live here now. `kimi` exposes the usage source, snapshot
+Both provider engines live here, together with the `burnblocks` command that
+reports either one from the terminal. `kimi` exposes the usage source, snapshot
 and runway state, schema-1 JSON, the caller-owned cache, configuration, and
 credential helpers. `openrouter` exposes the read-only API boundary, snapshot
 fetch, schema-2 JSON, the aggregate-only cache, configuration, and credential
 helpers. Each carries its original synthetic test suite and an external consumer
-check. The `burnblocks kimi` and `burnblocks openrouter` subcommands and the
-consumer migrations are follow-up work.
+check, and KimiBurn, RouteBurn, and DashBurn all consume these packages.
 
 ## Requirements
 
@@ -51,9 +49,30 @@ make snapshot  # local GoReleaser snapshot
 
 ## Usage
 
-Provider subcommands are not available yet; `burnblocks --version` reports the
-version. The command line grows `burnblocks kimi` and `burnblocks openrouter`
-next.
+```console
+$ burnblocks kimi            # one Kimi Code status check
+$ burnblocks openrouter      # one OpenRouter status check
+$ burnblocks kimi --json     # the provider's own JSON document
+```
+
+Each subcommand performs one read-only check. By default it prints a concise
+text report; `--json` prints the provider's versioned document instead — schema 1
+for Kimi, schema 2 for OpenRouter — and neither starts a terminal UI.
+
+| Flag | Effect |
+| --- | --- |
+| `--json` | Emit one provider JSON snapshot on stdout |
+| `--config <path>` | Use an explicit configuration file |
+| `--no-cache` | Do not read or write the local cache |
+
+Exit codes are `0` success, `1` runtime or API failure, `2` usage error, and `3`
+missing credentials. JSON goes to stdout and diagnostics go to stderr.
+
+The command resolves the same configuration, credentials, and cache the sibling
+applications use — `KIMIBURN_TOKEN` and the `kimiburn` keyring entry for Kimi,
+`ROUTEBURN_MANAGEMENT_KEY`, `ROUTEBURN_API_KEY`, and the `routeburn` entries for
+OpenRouter — so it adds no third credential store. Kimi reports ratios and
+OpenRouter reports US dollars; the two are never totalled together.
 
 ## Security
 
