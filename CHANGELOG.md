@@ -1,3 +1,9 @@
+## [1.2.0](https://github.com/acevedomiguel/burnblocks/compare/v1.1.0...v1.2.0) (2026-11-26)
+
+### Features
+
+* move the openrouter engine into burnblocks ([#3](https://github.com/acevedomiguel/burnblocks/issues/3)) ([1e18513](https://github.com/acevedomiguel/burnblocks/commit/1e185135b4fb584acf96a6a5202473fff176defe))
+
 ## [1.1.0](https://github.com/acevedomiguel/burnblocks/compare/v1.0.0...v1.1.0) (2026-11-26)
 
 ### Features
