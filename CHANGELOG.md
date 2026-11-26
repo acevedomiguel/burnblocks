@@ -1,3 +1,9 @@
+## [1.4.0](https://github.com/acevedomiguel/burnblocks/compare/v1.3.0...v1.4.0) (2026-11-26)
+
+### Features
+
+* expose the kimi config, sample, and platform constants ([#5](https://github.com/acevedomiguel/burnblocks/issues/5)) ([9b9e8c8](https://github.com/acevedomiguel/burnblocks/commit/9b9e8c8b931756ab0c7614ed6e0c091359800369))
+
 ## [1.3.0](https://github.com/acevedomiguel/burnblocks/compare/v1.2.0...v1.3.0) (2026-11-26)
 
 ### Features
