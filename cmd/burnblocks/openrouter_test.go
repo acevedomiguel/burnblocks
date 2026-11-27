@@ -42,9 +42,14 @@ func (f fakeOpenRouterAPI) NextRefreshAllowedAt() time.Time { return time.Time{}
 // cache layout.
 func openRouterTestDeps(t *testing.T, api openrouter.API) deps {
 	t.Helper()
-	dir := t.TempDir()
+	return openRouterDepsFor(t.TempDir(), api, map[string]string{openrouter.EnvManagementKey: "synthetic-management-key"})
+}
+
+// openRouterDepsFor builds hermetic OpenRouter dependencies rooted at dir. It
+// takes no *testing.T so the runnable examples, which have none, can reuse it.
+func openRouterDepsFor(dir string, api openrouter.API, env map[string]string) deps {
 	return deps{
-		environment:   map[string]string{openrouter.EnvManagementKey: "synthetic-management-key"},
+		environment:   env,
 		openRouterAPI: func(_, _, _, _ string) (openrouter.API, error) { return api, nil },
 		openRouterPaths: func() (openrouter.Paths, error) {
 			return openrouter.Paths{

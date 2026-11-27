@@ -117,15 +117,87 @@ make snapshot  # local GoReleaser snapshot
 
 ## Usage
 
-```console
-$ burnblocks kimi            # one Kimi Code status check
-$ burnblocks openrouter      # one OpenRouter status check
-$ burnblocks kimi --json     # the provider's own JSON document
-```
-
 Each subcommand performs one read-only check. By default it prints a concise
 text report; `--json` prints the provider's versioned document instead — schema 1
 for Kimi, schema 2 for OpenRouter — and neither starts a terminal UI.
+
+```console
+$ burnblocks kimi
+Kimi Code — https://api.kimi.com/coding/v1
+
+  limit_5h
+    used      25%
+    resets    in 4h 0m (2026-11-26 16:00 UTC)
+    runway    3h 0m · window_average · depletes 2026-11-26 15:00
+
+  limit_7d
+    used      not reported
+
+  limit_month_total
+    used      not reported
+
+  limit_month_code
+    used      not reported
+
+  updated    2026-11-26 12:00 UTC
+```
+
+```console
+$ burnblocks openrouter
+OpenRouter — https://openrouter.ai/api/v1
+
+  credits    $87.50 remaining of $100.00 purchased ($12.50 used)
+  last 30d  $3.00 spent · 1.5M tokens · 72 requests
+  runway     875d 0h · low confidence · depletes 2029-04-19
+  key        no regular API key configured
+
+  updated    2026-11-26 12:00 UTC
+```
+
+`--json` prints the provider's own versioned document on stdout instead of the
+text report:
+
+```console
+$ burnblocks kimi --json
+{
+  "schema_version": 1,
+  "generated_at": "2026-11-26T12:00:00Z",
+  "cached": false,
+  "cache_age_seconds": 0,
+  "source": {
+    "api_base": "https://api.kimi.com/coding/v1",
+    "endpoint": "/usages"
+  },
+  ...
+}
+
+$ burnblocks openrouter --json
+{
+  "schema_version": 2,
+  "generated_at": "2026-11-26T12:00:00Z",
+  "cached": false,
+  "account": {
+    "total_credits": 100,
+    "total_usage": 12.5,
+    "remaining": 87.5
+  },
+  ...
+}
+```
+
+`--no-cache` runs the check without reading or writing the local cache, so a
+failed read has nothing to fall back to and exits non-zero:
+
+```console
+$ burnblocks kimi --no-cache
+burnblocks: provider unavailable
+$ echo $?
+1
+```
+
+> The figures above are synthetic and match the runnable examples in
+> `cmd/burnblocks/example_test.go`, which `go test` checks. A real run shows your
+> own account.
 
 | Flag | Effect |
 | --- | --- |
