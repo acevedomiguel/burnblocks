@@ -33,7 +33,7 @@ In scope:
 
 Out of scope:
 
-- Vulnerabilities in OpenRouter's or Kimi's own APIs or consoles.
+- Vulnerabilities in OpenRouter's, Kimi's, or DeepSeek's own APIs or consoles.
 - Issues that require an attacker who already controls your user account or
   shell, or already holds your credential.
 - Rate-limit or billing disputes handled by a provider's support team.
@@ -46,8 +46,10 @@ Burn Blocks is deliberately narrow.
 
 - **Read-only.** OpenRouter access is limited to `GET /credits`, `GET /key`,
   `GET /analytics/meta`, and the read-only `POST /analytics/query`. Kimi access
-  is limited to `GET /usages`. It never purchases credits, creates or rotates
-  keys, sends inference requests, or changes quota.
+  is limited to `GET /usages`. DeepSeek access is limited to
+  `GET /user/balance`; its key is not read-only at the provider, so the same key
+  could call models, but Burn Blocks only ever reads with it. It never purchases
+  credits, creates or rotates keys, sends inference requests, or changes quota.
 - **Explicit configuration.** The library packages never read the environment,
   the keyring, or a cache implicitly; the caller supplies credentials and
   configuration, so an embedding application controls every source.
