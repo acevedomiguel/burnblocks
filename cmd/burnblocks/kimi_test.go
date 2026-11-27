@@ -25,14 +25,19 @@ func (f fakeKimiSource) ReadUsage(context.Context) (kimi.UsageReading, error) {
 
 func (fakeKimiSource) NextRefreshAllowedAt() time.Time { return time.Time{} }
 
-// memoryState is an in-memory runway cache, so no test touches the real one.
+// memoryState is an in-memory runway cache, so no test touches the real one. It
+// counts its reads and writes so a caller can prove that a code path (such as
+// --no-cache) touched no cache at all.
 type memoryState struct {
 	state   kimi.StoredState
 	loadErr error
 	saveErr error
+	loads   int
+	saves   int
 }
 
 func (m *memoryState) Load() (kimi.StoredState, error) {
+	m.loads++
 	if m.loadErr != nil {
 		return kimi.StoredState{}, m.loadErr
 	}
@@ -40,6 +45,7 @@ func (m *memoryState) Load() (kimi.StoredState, error) {
 }
 
 func (m *memoryState) Save(state kimi.StoredState) error {
+	m.saves++
 	if m.saveErr != nil {
 		return m.saveErr
 	}
