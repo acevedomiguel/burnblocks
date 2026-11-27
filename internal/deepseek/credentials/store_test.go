@@ -289,8 +289,11 @@ func TestLogoutReportsUnavailableKeyringButRemovesFile(t *testing.T) {
 // keyring entry would later shadow.
 func TestSaveRefusesFallbackWhenTheKeyringCannotBeCleared(t *testing.T) {
 	kr := newFakeKeyring()
+	kr.values[ServiceName+"/"+AccountName] = "sk-synthetic-old"
 	kr.fail = true
 	s, dir := newStore(t, kr)
+	// Keep the test hermetic: never consult the real process environment.
+	s.Env = map[string]string{}
 
 	err := s.Save(context.Background(), "sk-synthetic-new")
 	if !errors.Is(err, ErrKeyringUnavailable) {
@@ -299,8 +302,26 @@ func TestSaveRefusesFallbackWhenTheKeyringCannotBeCleared(t *testing.T) {
 	if _, statErr := os.Stat(filepath.Join(dir, "api-key")); !errors.Is(statErr, os.ErrNotExist) {
 		t.Errorf("Save must not write a fallback file when the keyring state is unknown: %v", statErr)
 	}
-	if len(kr.values) != 0 {
-		t.Errorf("keyring must be untouched: %v", kr.values)
+
+	// Once the keyring recovers, the old key is still the only one stored, and a
+	// retry replaces it cleanly rather than resurrecting the refused write.
+	kr.fail = false
+	key, err := s.Resolve(context.Background())
+	if err != nil {
+		t.Fatalf("Resolve: %v", err)
+	}
+	if key != "sk-synthetic-old" {
+		t.Errorf("key = %q, want the untouched old key", key)
+	}
+	if err := s.Save(context.Background(), "sk-synthetic-new"); err != nil {
+		t.Fatalf("Save after recovery: %v", err)
+	}
+	key, err = s.Resolve(context.Background())
+	if err != nil {
+		t.Fatalf("Resolve: %v", err)
+	}
+	if key != "sk-synthetic-new" {
+		t.Errorf("key = %q, want the new key after recovery", key)
 	}
 }
 

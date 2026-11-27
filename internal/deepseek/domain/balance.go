@@ -61,8 +61,9 @@ type BalanceSource interface {
 }
 
 // BalanceReading is one successful provider reading. Amounts that were absent
-// or malformed stay nil; Warnings records the malformed ones. Balances keeps
-// every currency the provider returned, in the order it returned them.
+// or malformed stay nil; Warnings records the malformed ones. Balances keeps the
+// documented currencies the provider returned, in the order it returned them; an
+// entry with any other currency is dropped with a warning.
 type BalanceReading struct {
 	ObservedAt time.Time
 	Available  Availability

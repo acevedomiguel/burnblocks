@@ -358,6 +358,10 @@ func TestNewClientRejectsNonOriginBases(t *testing.T) {
 		"https://user:pass@api.deepseek.com",
 		"https://api.deepseek.com/proxy",
 		"https://",
+		"https://api.deepseek.com?",
+		"https://api.deepseek.com#",
+		"https://api.deepseek.com/?",
+		"https://api.deepseek.com/#",
 	}
 	for _, base := range bases {
 		t.Run(base, func(t *testing.T) {
