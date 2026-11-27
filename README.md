@@ -1,13 +1,14 @@
 # Burn Blocks
 
-**Shared, read-only Go libraries and a CLI for Kimi Code and OpenRouter usage,
-credits, and estimated runway.**
+**Shared, read-only Go libraries and a CLI for Kimi Code, OpenRouter, and
+DeepSeek usage, credits, and estimated runway.**
 
 Burn Blocks is the single home for the provider logic behind
 [RouteBurn](https://github.com/acevedomiguel/routeburn) (OpenRouter),
-[KimiBurn](https://github.com/acevedomiguel/kimiburn) (Kimi Code), and
-[DashBurn](https://github.com/acevedomiguel/dashburn) (both). Those applications
-keep their terminal UI and import these packages for everything else.
+[KimiBurn](https://github.com/acevedomiguel/kimiburn) (Kimi Code),
+[DashBurn](https://github.com/acevedomiguel/dashburn) (both), and the DeepSeek
+provider. Those applications keep their terminal UI and import these packages
+for everything else.
 
 > Burn Blocks only reads data. It sends no inference requests, makes no
 > purchases, and never creates, rotates, or revokes credentials.
@@ -18,20 +19,24 @@ keep their terminal UI and import these packages for everything else.
 | --- | --- |
 | [`openrouter`](./openrouter) | OpenRouter credits, key limits, spend analytics, and credit runway. |
 | [`kimi`](./kimi) | Kimi Code membership quotas and runway. |
+| [`deepseek`](./deepseek) | DeepSeek account balance, per currency, with no runway. |
 
-Both are libraries only. Callers supply credentials, HTTP clients, clocks, and
-any prior state explicitly; the packages never read the environment, keyring, or
-a cache implicitly, and never write to stdout or stderr.
+All three are libraries only. Callers supply credentials, HTTP clients, clocks,
+and any prior state explicitly; the packages never read the environment, keyring,
+or a cache implicitly, and never write to stdout or stderr.
 
 ## Status
 
-Both provider engines live here, together with the `burnblocks` command that
-reports either one from the terminal. `kimi` exposes the usage source, snapshot
-and runway state, schema-1 JSON, the caller-owned cache, configuration, and
-credential helpers. `openrouter` exposes the read-only API boundary, snapshot
+The provider engines live here, together with the `burnblocks` command that
+reports Kimi and OpenRouter from the terminal. `kimi` exposes the usage source,
+snapshot and runway state, schema-1 JSON, the caller-owned cache, configuration,
+and credential helpers. `openrouter` exposes the read-only API boundary, snapshot
 fetch, schema-2 JSON, the aggregate-only cache, configuration, and credential
-helpers. Each carries its original synthetic test suite and an external consumer
-check, and KimiBurn, RouteBurn, and DashBurn all consume these packages.
+helpers. `deepseek` exposes the read-only balance boundary, snapshot fetch, its
+own schema-1 JSON, configuration paths, and credential helpers. Each carries its
+original synthetic test suite and an external consumer check, and KimiBurn,
+RouteBurn, and DashBurn all consume these packages. The `deepseek` package has no
+`burnblocks` subcommand yet; that and a DashBurn provider are separate follow-ups.
 
 ## Requirements
 
@@ -80,6 +85,7 @@ The libraries, for embedding either engine in your own program:
 ```bash
 go get github.com/acevedomiguel/burnblocks/kimi
 go get github.com/acevedomiguel/burnblocks/openrouter
+go get github.com/acevedomiguel/burnblocks/deepseek
 ```
 
 ### Prebuilt binaries
@@ -133,8 +139,15 @@ missing credentials. JSON goes to stdout and diagnostics go to stderr.
 The command resolves the same configuration, credentials, and cache the sibling
 applications use — `KIMIBURN_TOKEN` and the `kimiburn` keyring entry for Kimi,
 `ROUTEBURN_MANAGEMENT_KEY`, `ROUTEBURN_API_KEY`, and the `routeburn` entries for
-OpenRouter — so it adds no third credential store. Kimi reports ratios and
-OpenRouter reports US dollars; the two are never totalled together.
+OpenRouter — so it adds no credential store of its own. Kimi reports ratios and
+OpenRouter reports US dollars; the two are never totalled together. The
+`deepseek` library resolves `DEEPSEEK_API_KEY`, then the `deepseek` keyring
+entry, then a permission-restricted fallback file, and reports a balance per
+currency (`CNY` or `USD`) that is never summed with another currency or with
+OpenRouter's dollars.
+
+> DeepSeek has no read-only keys: the same key can also call models. Burn Blocks
+> still only ever reads the balance; it never sends inference requests with it.
 
 ## Security
 

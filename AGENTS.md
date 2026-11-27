@@ -5,10 +5,10 @@ the tagged central documents in `opencode.jsonc`. This file contains only
 Burn Blocks-specific contracts.
 
 Burn Blocks is the shared, headless Go module behind RouteBurn (OpenRouter),
-KimiBurn (Kimi Code), and DashBurn (both). The sibling applications keep their
-terminal UI and import these packages for provider access, calculations, and
-persistence. No Charm, Bubble Tea, Lipgloss, or other UI dependency belongs in
-this module.
+KimiBurn (Kimi Code), and DashBurn (both), plus the DeepSeek balance provider.
+The sibling applications keep their terminal UI and import these packages for
+provider access, calculations, and persistence. No Charm, Bubble Tea, Lipgloss,
+or other UI dependency belongs in this module.
 
 ## Hard rules (MUST)
 
@@ -37,6 +37,11 @@ this module.
 - Kimi calls are limited to `GET /usages` on the explicitly selected Kimi Code
   host. Never call both hosts automatically, and never fall back to Moonshot
   Open Platform or OpenRouter.
+- DeepSeek calls are limited to `GET /user/balance`. DeepSeek has no read-only
+  keys: the same key can call models, so the docs must say so, but the engine
+  still only ever reads. Never derive a DeepSeek runway from the readiness flag,
+  and never total two currencies together or add a DeepSeek amount to another
+  provider's dollars.
 - The library packages never read the environment, keyring, configuration, or
   cache implicitly and never write to stdout or stderr. Callers supply
   credentials, HTTP clients, clocks, writers, and prior state explicitly.
@@ -52,8 +57,9 @@ this module.
 
 - Module `github.com/acevedomiguel/burnblocks`, binary built from
   `./cmd/burnblocks`.
-- `openrouter` and `kimi` are the supported public packages. Provider-specific
-  types, quota rules, and runway formulas stay inside their own package.
+- `openrouter`, `kimi`, and `deepseek` are the supported public packages.
+  Provider-specific types, quota rules, runway formulas, and balance semantics
+  stay inside their own package.
 - Share generic utilities only when their semantics are identical across
   providers. Do not model OpenRouter and Kimi behind one generic provider
   abstraction that erases their differences.
@@ -73,6 +79,11 @@ this module.
   Burn Blocks-owned locations, missing-versus-zero semantics, conflict warnings,
   monthly membership and monthly Code allocation never summed, and
   process-lifetime runway history with injected clocks.
+- DeepSeek: only `GET /user/balance`, credential resolution limited to
+  Burn Blocks-owned locations, amounts parsed from strings with missing-versus-
+  zero preserved, per-currency balances that are never totalled together, an
+  independent schema-1 JSON with a trailing newline, and a runway that is always
+  honestly unavailable.
 - Preserve each provider's JSON schema version independently, including field
   names, nulls, warning strings, indentation, and trailing newlines.
 
