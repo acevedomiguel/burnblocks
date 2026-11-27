@@ -263,6 +263,47 @@ func TestLogoutRemovesOwnedCredentialsOnly(t *testing.T) {
 	}
 }
 
+// A keyring that cannot be reached is a genuine failure: logout must report it
+// while still removing the fallback file rather than silently claiming success
+// even though the stored key may survive.
+func TestLogoutReportsUnavailableKeyringButRemovesFile(t *testing.T) {
+	kr := newFakeKeyring()
+	kr.fail = true
+	s, dir := newStore(t, kr)
+	path := filepath.Join(dir, "api-key")
+	if err := os.WriteFile(path, []byte("sk-synthetic-file"), 0o600); err != nil {
+		t.Fatal(err)
+	}
+
+	err := s.Logout(context.Background())
+	if !errors.Is(err, ErrKeyringUnavailable) {
+		t.Fatalf("Logout err = %v, want ErrKeyringUnavailable", err)
+	}
+	if _, statErr := os.Stat(path); !errors.Is(statErr, os.ErrNotExist) {
+		t.Errorf("logout must still remove the fallback file: %v", statErr)
+	}
+}
+
+// A keyring that cannot take the write and cannot be cleared leaves the keyring
+// state unknown. Save must refuse rather than write a file that a surviving
+// keyring entry would later shadow.
+func TestSaveRefusesFallbackWhenTheKeyringCannotBeCleared(t *testing.T) {
+	kr := newFakeKeyring()
+	kr.fail = true
+	s, dir := newStore(t, kr)
+
+	err := s.Save(context.Background(), "sk-synthetic-new")
+	if !errors.Is(err, ErrKeyringUnavailable) {
+		t.Fatalf("Save err = %v, want ErrKeyringUnavailable", err)
+	}
+	if _, statErr := os.Stat(filepath.Join(dir, "api-key")); !errors.Is(statErr, os.ErrNotExist) {
+		t.Errorf("Save must not write a fallback file when the keyring state is unknown: %v", statErr)
+	}
+	if len(kr.values) != 0 {
+		t.Errorf("keyring must be untouched: %v", kr.values)
+	}
+}
+
 func TestRedactHidesDeepSeekKeyShapes(t *testing.T) {
 	// Synthetic, not a real key.
 	secret := "Authorization: Bearer sk-0123456789abcdef0123456789abcdef"

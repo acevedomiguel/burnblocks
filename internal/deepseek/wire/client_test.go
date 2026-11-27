@@ -349,6 +349,26 @@ func TestNewClientValidation(t *testing.T) {
 	})
 }
 
+// A base that is not a bare origin would move the request off the fixed
+// endpoint, so it must be refused rather than silently mangled into the URL.
+func TestNewClientRejectsNonOriginBases(t *testing.T) {
+	bases := []string{
+		"https://api.deepseek.com?x=1",
+		"https://api.deepseek.com#fragment",
+		"https://user:pass@api.deepseek.com",
+		"https://api.deepseek.com/proxy",
+		"https://",
+	}
+	for _, base := range bases {
+		t.Run(base, func(t *testing.T) {
+			_, err := NewClient(WithBaseURL(base), WithAPIKey("sk-synthetic-key"))
+			if !errors.Is(err, ErrUnsupportedBaseURL) {
+				t.Fatalf("err = %v, want ErrUnsupportedBaseURL for %q", err, base)
+			}
+		})
+	}
+}
+
 func TestDecodeBalanceIgnoresUnknownFields(t *testing.T) {
 	body := `{"is_available":true,"future_field":123,"balance_infos":[{"currency":"CNY","total_balance":"1.00","extra":"x"}]}`
 	reading, err := decodeBalance([]byte(body), time.Unix(0, 0))
@@ -357,6 +377,34 @@ func TestDecodeBalanceIgnoresUnknownFields(t *testing.T) {
 	}
 	if len(reading.Balances) != 1 || reading.Balances[0].Total == nil {
 		t.Fatalf("reading = %+v", reading)
+	}
+}
+
+// An unrecognised currency is provider-controlled text. It must be dropped with
+// a static warning, never echoed into a warning or the projected balances, so a
+// secret-shaped value cannot reach a serialized document unredacted.
+func TestReadBalanceDropsAnUnrecognisedCurrencyWithoutEchoingIt(t *testing.T) {
+	const secret = "sk-0123456789abcdef0123456789abcdef"
+	body := `{"is_available":true,"balance_infos":[{"currency":"` + secret + `","total_balance":"5.00"},{"currency":"CNY","total_balance":"1.00"}]}`
+	srv := handlerFunc(t, body, http.StatusOK, nil)
+	reading, err := newClient(t, srv.URL).ReadBalance(context.Background())
+	if err != nil {
+		t.Fatalf("ReadBalance: %v", err)
+	}
+	if len(reading.Balances) != 1 || reading.Balances[0].Currency != "CNY" {
+		t.Fatalf("balances = %+v, want only the documented CNY entry", reading.Balances)
+	}
+	var found bool
+	for _, w := range reading.Warnings {
+		if strings.Contains(w.Message, secret) || strings.Contains(w.Message, "sk-") {
+			t.Errorf("warning echoed provider text: %q", w.Message)
+		}
+		if strings.Contains(w.Message, "unrecognised currency") {
+			found = true
+		}
+	}
+	if !found {
+		t.Errorf("expected an unrecognised-currency warning: %v", reading.Warnings)
 	}
 }
 

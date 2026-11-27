@@ -42,20 +42,24 @@ func decodeBalance(raw json.RawMessage, observedAt time.Time) (domain.BalanceRea
 			})
 			continue
 		}
+		// The currency comes from the provider. Only the documented values are
+		// kept, so a malformed value is never echoed into a warning or into the
+		// public JSON, where it would bypass redaction.
 		unit := domain.Currency(currency)
 		if unit != domain.CurrencyCNY && unit != domain.CurrencyUSD {
 			reading.Warnings = append(reading.Warnings, domain.Warning{
 				Section: "Balances",
-				Message: "an unrecognised currency " + currency + " was reported and is kept as-is",
+				Message: "a balance entry with an unrecognised currency was ignored",
 			})
+			continue
 		}
 		currencies[unit] = true
 
 		reading.Balances = append(reading.Balances, domain.Balance{
 			Currency: unit,
-			Total:    parseAmount(info["total_balance"], currency+" total_balance", &reading.Warnings),
-			Granted:  parseAmount(info["granted_balance"], currency+" granted_balance", &reading.Warnings),
-			ToppedUp: parseAmount(info["topped_up_balance"], currency+" topped_up_balance", &reading.Warnings),
+			Total:    parseAmount(info["total_balance"], "total_balance", &reading.Warnings),
+			Granted:  parseAmount(info["granted_balance"], "granted_balance", &reading.Warnings),
+			ToppedUp: parseAmount(info["topped_up_balance"], "topped_up_balance", &reading.Warnings),
 		})
 	}
 

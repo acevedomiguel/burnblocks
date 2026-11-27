@@ -140,16 +140,25 @@ func NewClient(opts ...Option) (*Client, error) {
 
 // normalizeBaseURL validates the selected base. HTTPS is required; an insecure
 // HTTP base is accepted only when the host is loopback, which tests inject. The
-// error never echoes the supplied value, which may contain a secret-like query.
+// base must be a bare origin: a query, fragment, userinfo, or path would move
+// the request off the fixed endpoint, so it is refused rather than mangled into
+// the URL. The error never echoes the supplied value, which may contain a
+// secret-like query.
 func normalizeBaseURL(base string) (string, error) {
 	u, err := url.Parse(base)
 	if err != nil {
 		return "", ErrUnsupportedBaseURL
 	}
-	if u.Scheme == "https" {
-		return strings.TrimRight(base, "/"), nil
+	if u.Host == "" || u.User != nil || u.RawQuery != "" || u.Fragment != "" {
+		return "", ErrUnsupportedBaseURL
 	}
-	if u.Scheme == "http" && isLoopback(u.Hostname()) {
+	if u.Path != "" && u.Path != "/" {
+		return "", ErrUnsupportedBaseURL
+	}
+	switch {
+	case u.Scheme == "https":
+		return strings.TrimRight(base, "/"), nil
+	case u.Scheme == "http" && isLoopback(u.Hostname()):
 		return strings.TrimRight(base, "/"), nil
 	}
 	return "", ErrUnsupportedBaseURL
