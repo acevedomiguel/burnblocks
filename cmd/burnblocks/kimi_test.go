@@ -65,9 +65,14 @@ func syntheticKimiReading(now time.Time) kimi.UsageReading {
 // configuration layout.
 func kimiTestDeps(t *testing.T, source kimi.UsageSource, state kimi.StateStore) deps {
 	t.Helper()
-	dir := t.TempDir()
+	return kimiDepsFor(t.TempDir(), source, state, map[string]string{kimi.TokenEnvVar: "synthetic-token"})
+}
+
+// kimiDepsFor builds hermetic Kimi dependencies rooted at dir. It takes no
+// *testing.T so the runnable examples, which have none, can reuse it.
+func kimiDepsFor(dir string, source kimi.UsageSource, state kimi.StateStore, env map[string]string) deps {
 	return deps{
-		environment: map[string]string{kimi.TokenEnvVar: "synthetic-token"},
+		environment: env,
 		kimiSource:  func(_, _, _ string) (kimi.UsageSource, error) { return source, nil },
 		kimiState:   state,
 		kimiPaths: func() (kimi.Paths, error) {
