@@ -1,0 +1,30 @@
+internal/deepseek/credentials/save.go
+  s_3a4bc3529a2444::t_9644bb69d2f1e8 13-14,18-20,30,34-56
+  s_3a4bc3529a2444::t_9e7dabfdb1636d 87-90,92
+internal/deepseek/wire/client_test.go
+  s_3a4bc3529a2444::t_5f60aa536bef96 352-371
+  s_3a4bc3529a2444::t_884eccf869180d 383-410
+internal/deepseek/wire/client.go
+  s_3a4bc3529a2444::t_72dd29db83a53a 143-146,152-153,155-161
+internal/deepseek/wire/decode.go
+  s_3a4bc3529a2444::t_6ae4d0ca673a4f 60-62
+  s_3a4bc3529a2444::t_f2b6d73a70858a 45-47,52,54
+internal/deepseek/credentials/store_test.go
+  s_3a4bc3529a2444::t_7b2ace268474c5 266-306
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "7a01940e9c07a472f5b0fb1bbf3e546388b98613",
+  "prompts": {},
+  "sessions": {
+    "s_3a4bc3529a2444": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_de5296186ffe2CuNQuN2LhN3il",
+        "model": "deepseek/deepseek-v4.1-flash"
+      },
+      "human_author": "Miguel Angel Acevedo <acevedomiguel@gmail.com>"
+    }
+  }
+}
