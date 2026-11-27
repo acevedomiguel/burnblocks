@@ -1,0 +1,27 @@
+cmd/burnblocks/kimi_test.go
+  s_3a4bc3529a2444::t_212b68e23ecb0f 68-73,75
+cmd/burnblocks/example_test.go
+  s_3a4bc3529a2444::t_a0c2cd6b96fb86 1-264
+README.md
+  s_3a4bc3529a2444::t_72af66d23edf9a 124-164,172-177,185-200
+  s_3a4bc3529a2444::t_ee026d42372cdb 165-171,178-184
+  s_3a4bc3529a2444::t_e9cd45c3f8c86c 201
+cmd/burnblocks/openrouter_test.go
+  s_3a4bc3529a2444::t_f3c3da77207e4d 45-50,52
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "8ad449ac6c6d7fe8de056852a4686c48b63580ff",
+  "prompts": {},
+  "sessions": {
+    "s_3a4bc3529a2444": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_de5296186ffe2CuNQuN2LhN3il",
+        "model": "deepseek/deepseek-v4.1-flash"
+      },
+      "human_author": "Miguel Angel Acevedo <acevedomiguel@gmail.com>"
+    }
+  }
+}
