@@ -1,3 +1,9 @@
+## [1.8.0](https://github.com/acevedomiguel/burnblocks/compare/v1.7.1...v1.8.0) (2026-11-27)
+
+### Features
+
+* add the deepseek balance provider ([#10](https://github.com/acevedomiguel/burnblocks/issues/10)) ([9570211](https://github.com/acevedomiguel/burnblocks/commit/9570211248b025016f22826113ecf99f5683941d))
+
 ## [1.7.1](https://github.com/acevedomiguel/burnblocks/compare/v1.7.0...v1.7.1) (2026-11-26)
 
 ### Bug Fixes
