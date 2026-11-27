@@ -41,6 +41,15 @@ func exampleAnalytics() []openrouter.AnalyticsRow {
 	return rows
 }
 
+// mustOK runs one example command and fails the example with the diagnostic if
+// it does not exit 0, so a regression reads as an exit code rather than only an
+// output diff.
+func mustOK(args []string, d deps, stdout, stderr *bytes.Buffer) {
+	if code := runWithDeps(args, stdout, stderr, d); code != exitOK {
+		panic(fmt.Sprintf("%v exited %d: %s", args, code, stderr.String()))
+	}
+}
+
 // Example_help prints the flag list and the exit-code table.
 func Example_help() {
 	var stdout, stderr bytes.Buffer
@@ -76,7 +85,7 @@ func Example_kimiText() {
 	d := kimiDepsFor(dir, fakeKimiSource{reading: syntheticKimiReading(kimiNow())}, &memoryState{}, map[string]string{kimi.TokenEnvVar: "synthetic-token"})
 
 	var stdout, stderr bytes.Buffer
-	_ = runWithDeps([]string{"kimi"}, &stdout, &stderr, d)
+	mustOK([]string{"kimi"}, d, &stdout, &stderr)
 	fmt.Print(stdout.String())
 
 	// Output:
@@ -106,7 +115,7 @@ func Example_kimiJSON() {
 	d := kimiDepsFor(dir, fakeKimiSource{reading: syntheticKimiReading(kimiNow())}, &memoryState{}, map[string]string{kimi.TokenEnvVar: "synthetic-token"})
 
 	var stdout, stderr bytes.Buffer
-	_ = runWithDeps([]string{"kimi", "--json"}, &stdout, &stderr, d)
+	mustOK([]string{"kimi", "--json"}, d, &stdout, &stderr)
 	fmt.Print(stdout.String())
 
 	// Output:
@@ -166,7 +175,7 @@ func Example_openrouterText() {
 	d := openRouterDepsFor(dir, api, map[string]string{openrouter.EnvManagementKey: "synthetic-management-key"})
 
 	var stdout, stderr bytes.Buffer
-	_ = runWithDeps([]string{"openrouter"}, &stdout, &stderr, d)
+	mustOK([]string{"openrouter"}, d, &stdout, &stderr)
 	fmt.Print(stdout.String())
 
 	// Output:
@@ -192,7 +201,7 @@ func Example_openrouterJSON() {
 	d := openRouterDepsFor(dir, api, map[string]string{openrouter.EnvManagementKey: "synthetic-management-key"})
 
 	var stdout, stderr bytes.Buffer
-	_ = runWithDeps([]string{"openrouter", "--json"}, &stdout, &stderr, d)
+	mustOK([]string{"openrouter", "--json"}, d, &stdout, &stderr)
 	fmt.Print(stdout.String())
 
 	// Output:
@@ -229,14 +238,19 @@ func Example_openrouterJSON() {
 }
 
 // Example_noCache shows --no-cache: with no cache there is nothing to fall back
-// to, so a failed read exits non-zero and prints the reason on stderr.
+// to, so a failed read exits non-zero and prints the reason on stderr. It also
+// asserts that the cache was not touched at all.
 func Example_noCache() {
 	dir, cleanup := exampleDir()
 	defer cleanup()
-	d := kimiDepsFor(dir, fakeKimiSource{err: errors.New("provider unavailable")}, &memoryState{}, map[string]string{kimi.TokenEnvVar: "synthetic-token"})
+	state := &memoryState{}
+	d := kimiDepsFor(dir, fakeKimiSource{err: errors.New("provider unavailable")}, state, map[string]string{kimi.TokenEnvVar: "synthetic-token"})
 
 	var stdout, stderr bytes.Buffer
 	code := runWithDeps([]string{"kimi", "--no-cache"}, &stdout, &stderr, d)
+	if state.loads != 0 || state.saves != 0 {
+		panic(fmt.Sprintf("--no-cache touched the cache: %d loads, %d saves", state.loads, state.saves))
+	}
 
 	fmt.Printf("exit code: %d\n", code)
 	fmt.Print(stderr.String())
