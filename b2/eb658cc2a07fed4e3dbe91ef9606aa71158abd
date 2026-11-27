@@ -1,0 +1,23 @@
+cmd/burnblocks/example_test.go
+  s_3a4bc3529a2444::t_3372fbdf081110 241-242,246-247,251-253
+  s_3a4bc3529a2444::t_cd6c4be1fb75e0 44-52,88,178,204
+  s_3a4bc3529a2444::t_3999a7fe97170e 118
+cmd/burnblocks/kimi_test.go
+  s_3a4bc3529a2444::t_fca8f4aba0baf8 28-30,35-36,40,48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "b2eb658cc2a07fed4e3dbe91ef9606aa71158abd",
+  "prompts": {},
+  "sessions": {
+    "s_3a4bc3529a2444": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_de5296186ffe2CuNQuN2LhN3il",
+        "model": "deepseek/deepseek-v4.1-flash"
+      },
+      "human_author": "Miguel Angel Acevedo <acevedomiguel@gmail.com>"
+    }
+  }
+}
