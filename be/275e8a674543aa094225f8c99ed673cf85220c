@@ -1,0 +1,25 @@
+internal/deepseek/wire/client.go
+  s_3a4bc3529a2444::t_a557eac8f1b72b 145-147,153,159-164,167,169
+internal/deepseek/credentials/store_test.go
+  s_3a4bc3529a2444::t_8a4c3037f35566 292,295-296,305-324
+internal/deepseek/domain/balance.go
+  s_3a4bc3529a2444::t_c070142c954ab4 64-66
+internal/deepseek/wire/client_test.go
+  s_3a4bc3529a2444::t_0e25c37ec47a3e 361-364
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.7.6",
+  "base_commit_sha": "be275e8a674543aa094225f8c99ed673cf85220c",
+  "prompts": {},
+  "sessions": {
+    "s_3a4bc3529a2444": {
+      "agent_id": {
+        "tool": "opencode",
+        "id": "ses_de5296186ffe2CuNQuN2LhN3il",
+        "model": "deepseek/deepseek-v4.1-flash"
+      },
+      "human_author": "Miguel Angel Acevedo <acevedomiguel@gmail.com>"
+    }
+  }
+}
